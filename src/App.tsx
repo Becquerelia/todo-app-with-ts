@@ -1,13 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import "./App.css";
 
-function App() {
+const App: FC = () => {
   return (
     <div className="App">
       <h1>ToDo App</h1>
+      <div className="header">
+        <div className="inputContainer">
+          <input type="text" placeholder="Task..." />
+          <input type="number" placeholder="Deadline (in Days)..." />
+        </div>
+
+        <button>Add Task</button>
+      </div>
+      <div className="todoList"></div>
     </div>
   );
-}
+};
 
 export default App;
