@@ -15,13 +15,19 @@ const App: FC = () => {
     } else {
       setDeadline(Number(event.target.value));
     } 
-  }
+  };
   
   const addTask = ():void => {
     const newTask = {taskName: task, deadline: deadline};
     setTodoList([...todoList, newTask]);
     setTask("");
     setDeadline(0);
+  };
+
+  const completeTask = (taskNameToDelete: string): void => {
+    setTodoList(todoList.filter((eachTask)=>{
+      return eachTask.taskName !== taskNameToDelete;
+    }))    
   }
 
   return (
@@ -38,7 +44,7 @@ const App: FC = () => {
       <div className="todoList">
         {todoList.map((eachTask: Task, key: number)=>{
           return (
-            <TodoTask key={key} task={eachTask} />
+            <TodoTask key={key} task={eachTask} completeTask={completeTask} />
           )
         })}
       </div>
